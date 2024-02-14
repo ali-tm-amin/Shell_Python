@@ -3,12 +3,12 @@
 # default value to use if none specified
 PERCENT=30
 
-# test for command line arguement is present
+# test for command line argument is present
 if [[ $# -le 0 ]]
 then
-    printf "There are no disks running with more usage than= %d\n" $PERCENT
-# test if argument is an integer
-# if it is, use that as percent, if not use default
+    printf "No disks are running with more usage than= %d\n" $PERCENT
+# test if the argument is an integer
+# If it is, use that as percent, if not use default
 else
     if [[ $1 =~ ^-?[0-9]+([0-9]+)?$ ]]
     then
@@ -25,6 +25,6 @@ do
     p=$(echo $data | awk '{print $2}')
     if [ $used -ge $PERCENT ]
     then
-        "$p\" has used $usedecho "WARNING: The partition \% of total available space - Date: $(date)"
+        echo "WARNING: The partition \"$p\" has used $used% of total available space - Date: $(date)"
     fi
 done
